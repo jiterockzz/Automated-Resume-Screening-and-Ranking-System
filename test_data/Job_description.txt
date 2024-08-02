@@ -1,0 +1,53 @@
+EXPERIENCED CANDIDATES IN HEALTH AND INSURANCE ANALYTICS IS WHAT WE ARE LOOKING FOR . 
+
+SENIOR DATA SCIENTISTS - 6-7 YEARS OF EXPERIENCE - PREFERABLY FROM UHG / OPTUM ETC 
+The ideal candidate's favorite words are learning, data, scale, and agility. You will leverage your strong collaboration skills and ability to extract valuable insights from highly complex data sets to ask the right questions and find the right answers. 
+
+Responsibilities
+
+Analyze raw data: assessing quality, cleansing, structuring for downstream processing
+Design accurate and scalable prediction algorithms
+Collaborate with engineering team to bring analytical prototypes to production
+Generate actionable insights for business improvements
+
+
+Qualifications
+
+Bachelor's degree or equivalent experience in quantative field (Statistics, Mathematics, Computer Science, Engineering, etc.)
+At least 6-7 years' of experience in quantitative analytics 
+Deep understanding of predictive modeling, machine-learning, clustering and classification techniques, and algorithms
+Fluency in a programming language (Python, C,C++, Java, SQL)
+Familiarity with Big Data frameworks and visualization tools (Cassandra, Hadoop, Spark, Tableau)
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+About Position:
+
+ 
+
+
+We are looking for a Python Developer with good exposure on REST API. The potential candidate should possess deep knowledge of software development, a keen eye for detail, and can work independently. You will collaborate with cross-functional teams and leverage your technical skills to optimize website performance and enhance the overall customer journey.
+
+
+ 
+Role: Python Developer
+Location: Any PSL
+Experience: 4 to 7 years
+Job Type: Full Time Employment
+ 
+
+
+What You'll Do:
+
+
+
+ 
+Minimum experience between 4 to 7 years.
+Hands-on experience in Python language and framework FastAPI, Django
+Strong understanding of software engineering principles and fundamentals including data structures and algorithms, design patterns, messaging patterns, containerization, enterprise application and microservice / base.
+Hands on with Unit Test, Coding best practices like Sonar cube, Code Review.
+Strong knowledge of computer science fundamentals to develop a scalable system.
+Excellent hands on with Databases - relational or NoSQL.
+Deep expertise in Python with experience implementing REST APIs
+Knowledge around middleware, cloud tools like Azure, AWS and exposure to DevOps practices like CI/CD, Documentation using Swagger will be an added advantage.
+Strong in writing SQL/PostgreSQL queries
