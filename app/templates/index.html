@@ -3,118 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume Parser</title>
+    <title>Resume Suitability</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-            color: #4a90e2;
-        }
-        form {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        input[type="file"], textarea, input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        input[type="submit"] {
-            background: #4a90e2;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background: #357ABD;
-        }
-        .message {
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-        .message.error {
-            background: #f8d7da;
-            color: #721c24;
-        }
-        .message.success {
-            background: #d4edda;
-            color: #155724;
-        }
-        .animation {
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-        .animation.fade-in {
-            opacity: 1;
-        }
-        a {
-            color: #4a90e2;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+
 </head>
 <body>
-    <div class="container">
-        <h1>Auto Resume Screening</h1>
-        
-        <div class="animation fade-in">
-            <form action="/suitability" method="POST" enctype="multipart/form-data">
-                <label for="resume">Upload Resume:</label>
-                <input type="file" name="resume" id="resume" accept=".pdf,.docx" required>
-                
-                <label for="job_description">Job Description:</label>
-                <textarea name="job_description" id="job_description" placeholder="Enter job description..." rows="6" required></textarea>
-                
-                <input type="submit" value="Check Suitability">
-            </form>
 
-            {% if message %}
-            <div class="message success">{{ message }}</div>
-            {% endif %}
+<h1>Resume Suitability Check</h1>
+<form method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="action" value="analyze_resume">
+    <input type="file" name="resume" required>
+    <textarea name="job_description" placeholder="Enter Job Description" required></textarea>
+    <button type="submit">Analyze Resume</button>
+</form>
 
-            {% if similarity is not none %}
-            <p>Job Description Suitability: {{ similarity }}</p>
-            {% endif %}
 
-            {% if error %}
-            <div class="message error">{{ error }}</div>
-            {% endif %}
-        </div>
 
-        <a href="/ranking">Go to Ranking Page</a>
-    </div>
+{% if message %}
+    <h3>{{ message }}</h3>
+{% endif %}
 
-    <script>
-        // JavaScript for animations or interactions
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('.animation').classList.add('fade-in');
-        });
-    </script>
+{% if similarity %}
+    <p><strong>Suitability Score:</strong> {{ similarity }}</p>
+{% endif %}
+
+{% if chatbot_response %}
+    <h3>Chatbot Response</h3>
+    <p>{{ chatbot_response }}</p>
+{% endif %}
+
+
+<form method="POST">
+    <input type="text" name="chatbot_question" placeholder="Ask the chatbot" required>
+    <button type="submit">Submit</button>
+</form>
+
+
 </body>
 </html>
