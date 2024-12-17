@@ -2,44 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume Suitability</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-
-
+    <title>Resume Screening and Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <h1>Resume Screening and Job Suitability</h1>
+    
+    <!-- Resume Analysis Form -->
+    <form method="POST" enctype="multipart/form-data">
+        <label for="resume">Upload Resume (PDF/DOCX):</label>
+        <input type="file" name="resume" id="resume" required><br><br>
 
-<h1>Resume Suitability Check</h1>
-<form method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="action" value="analyze_resume">
-    <input type="file" name="resume" required>
-    <textarea name="job_description" placeholder="Enter Job Description" required></textarea>
-    <button type="submit">Analyze Resume</button>
-</form>
+        <label for="job_description">Job Description:</label><br>
+        <textarea name="job_description" id="job_description" rows="4" cols="50" required></textarea><br><br>
 
+        <button type="submit">Analyze Resume</button>
+    </form>
 
+    <!-- Display Results -->
+    {% if message %}
+        <p><strong>{{ message }}</strong></p>
+    {% endif %}
 
-{% if message %}
-    <h3>{{ message }}</h3>
-{% endif %}
+    {% if similarity %}
+        <p><strong>{{ similarity }}</strong></p>
+    {% endif %}
 
-{% if similarity %}
-    <p><strong>Suitability Score:</strong> {{ similarity }}</p>
-{% endif %}
+    <!-- Chatbot Form: Only visible if context exists -->
+    {% if context %}
+        <h2>Ask the Chatbot About the Resume</h2>
+        <form method="POST">
+            <label for="chatbot_question">Your Question:</label><br>
+            <input type="text" name="chatbot_question" id="chatbot_question" required><br><br>
+            <!-- Pass the context back to Flask -->
+            <input type="hidden" name="context" value="{{ context }}">
+            <button type="submit">Ask Chatbot</button>
+        </form>
+    {% endif %}
 
-{% if chatbot_response %}
-    <h3>Chatbot Response</h3>
-    <p>{{ chatbot_response }}</p>
-{% endif %}
+    <!-- Display Chatbot Response -->
+    {% if chatbot_response %}
+        <p><strong>Chatbot Response:</strong> {{ chatbot_response }}</p>
+    {% endif %}
 
+    {% if error %}
+        <p style="color:red;"><strong>{{ error }}</strong></p>
+    {% endif %}
 
-<form method="POST">
-    <input type="text" name="chatbot_question" placeholder="Ask the chatbot" required>
-    <button type="submit">Submit</button>
-</form>
-
-
+    <a href="/ranking">Ranking</a>
 </body>
 </html>
